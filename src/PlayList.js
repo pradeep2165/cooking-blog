@@ -7,34 +7,31 @@ import Avatar from '@mui/material/Avatar';
 import ImageIcon from '@mui/icons-material/Image';
 import WorkIcon from '@mui/icons-material/Work';
 import BeachAccessIcon from '@mui/icons-material/BeachAccess';
+import {useNavigate} from 'react-router-dom';
+export default function PlayList({setPlayListId}) {
+    const pList = ['Snacks', 'Veg Recipe', 'Site Item', 'Breakfast', 'Non Veg Recipe', 'Lunch', 'Dinner', 'Stater', 'Sweets'];
+    const itemId = {
+        'Snacks':'PL2jOBpLoK1GIuLBNIhJwU9pFje-wtr8S6', 
+    'Veg Recipe':'PL2jOBpLoK1GLHEmESYNqMiHDhSjwTzR_e', 'Site Item':'PL2jOBpLoK1GJR_vQsf4FQYjzCwU8M4Wr3', 'Breakfast':'PL2jOBpLoK1GLRn4tKkMU5jBcRECx5tdOJ', 'Non Veg Recipe':'PL2jOBpLoK1GIp-3QED3Iub69HvegzHgab', 'Lunch':'PL2jOBpLoK1GLT6aJhWzWRtH7xJyF8ujcs', 'Dinner':'PL2jOBpLoK1GKJCK3xLH5b5LECbuJmQCSw', 'Stater':'PL2jOBpLoK1GJm-Ojkaiz39R6DCAFEoT1F', 'Sweets':'PL2jOBpLoK1GII0wfelC9EtdppLly9IghI'}
 
-export default function PlayList() {
-  return (
+    pList.sort();
+    const navigate = useNavigate()
+        const handleClick= (item)=>{
+            
+            setPlayListId(itemId[item]);        
+            navigate("/")
+        }
+    
+    return (
     <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper'}} >
-      <ListItem>
+      {pList.map((item)=>(<ListItem onClick={()=>handleClick(item)} sx={{cursor:'pointer'}} key={item}>
         <ListItemAvatar>
           <Avatar>
             <ImageIcon />
           </Avatar>
         </ListItemAvatar>
-        <ListItemText primary="Photos" secondary="Jan 9, 2014" />
-      </ListItem>
-      <ListItem>
-        <ListItemAvatar>
-          <Avatar>
-            <WorkIcon />
-          </Avatar>
-        </ListItemAvatar>
-        <ListItemText primary="Work" secondary="Jan 7, 2014" />
-      </ListItem>
-      <ListItem>
-        <ListItemAvatar>
-          <Avatar>
-            <BeachAccessIcon />
-          </Avatar>
-        </ListItemAvatar>
-        <ListItemText primary="Vacation" secondary="July 20, 2014" />
-      </ListItem>
+        <ListItemText primary={`${item}`}/>
+      </ListItem>))}
     </List>
   );
 }

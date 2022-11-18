@@ -4,7 +4,7 @@ import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
 import { createTheme, ThemeProvider, styled } from "@mui/material/styles";
 import VCard from "./VCard";
-import { getVideoData } from "../api/getVideoData";
+import { getVideoData, getPlayListVideoData } from "../api/getVideoData";
 import { rowData } from "./ds";
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -18,16 +18,21 @@ const Item = styled(Paper)(({ theme }) => ({
 const darkTheme = createTheme({ palette: { mode: "dark" } });
 const lightTheme = createTheme({ palette: { mode: "light" } });
 
-export default function Home() {
+export default function Home({playListId}) {
   const [data, setData] = React.useState(rowData);
   const contents = data.contents;
-  localStorage.setItem("content", contents);
+  
 
   React.useEffect(() => {
-    // getVideoData().then(videoData=>setData(videoData))
+    getVideoData().then(videoData=>setData(videoData))
   }, []);
-  console.log(contents);
-  console.log(data);
+  React.useEffect(() => {
+    if(playListId){
+      getPlayListVideoData(playListId).then(videoData=>setData(videoData))
+    }
+  }, [playListId]);
+  
+
   return (
     <Grid container>
       <Grid container direction="row" justifyContent="center" gap={2}>
