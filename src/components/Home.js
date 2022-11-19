@@ -22,11 +22,11 @@ export default function Home({ playListId }) {
   const contents = data.contents;
 
   React.useEffect(() => {
-    getVideoData().then((videoData) => setData(videoData));
+    // getVideoData().then((videoData) => setData(videoData));
   }, []);
   React.useEffect(() => {
     if (playListId) {
-      getPlayListVideoData(playListId).then((videoData) => setData(videoData));
+      // getPlayListVideoData(playListId).then((videoData) => setData(videoData));
     }
   }, [playListId]);
 

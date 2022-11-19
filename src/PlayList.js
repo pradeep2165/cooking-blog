@@ -6,7 +6,7 @@ import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 import ImageIcon from '@mui/icons-material/Image';
 import {useNavigate} from 'react-router-dom';
-export default function PlayList({setPlayListId}) {
+export default function PlayList({setPlayListId, setPlayListHide}) {
     const pList = ['Snacks', 'Veg Recipe', 'Site Item', 'Breakfast', 'Non Veg Recipe', 'Lunch', 'Dinner', 'Stater', 'Sweets'];
     const itemId = {
         'Snacks':'PL2jOBpLoK1GIuLBNIhJwU9pFje-wtr8S6', 
@@ -16,7 +16,8 @@ export default function PlayList({setPlayListId}) {
     const navigate = useNavigate()
         const handleClick= (item)=>{
             
-            setPlayListId(itemId[item]);        
+            setPlayListId(itemId[item]);    
+            setPlayListHide(true)    
             navigate("/")
         }
     
