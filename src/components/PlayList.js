@@ -14,15 +14,15 @@ export default function PlayList({setPlayListId, setPlayListHide}) {
 
     pList.sort();
     const navigate = useNavigate()
-        const handleClick= (item)=>{
-            
+        const handleClick= (item)=>{            
             setPlayListId(itemId[item]);    
             setPlayListHide(true)    
             navigate("/")
         }
     
     return (
-    <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper'}} >
+    <List sx={{ width: '100%', maxWidth: 250, bgcolor: 'background.paper', transition:"0 0 0"}} >
+      <h1>Play List</h1>
       {pList.map((item)=>(<ListItem onClick={()=>handleClick(item)} sx={{cursor:'pointer'}} key={item}>
         <ListItemAvatar>
           <Avatar>

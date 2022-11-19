@@ -5,7 +5,8 @@ import Home from "./components/Home";
 import { Routes, Route } from "react-router-dom";
 import Video from "./components/Video";
 import PlaylistPlayIcon from '@mui/icons-material/PlaylistPlay';
-import PlayList from "./PlayList";
+import PlayList from "./components/PlayList";
+import Header from "./components/Header";
 
 const App = () => {
    const [playListId, setPlayListId] = useState('');
@@ -15,14 +16,17 @@ const App = () => {
     <>
       <CssBaseline />
       <Navbar setPlayListHide={setPlayListHide}/>
-      
-      <Grid container marginTop={2} justifyContent="center">
+      <Grid justifyContent="center" marginTop={2}>
+      <Header/>
+        </Grid>         
+      <Grid container marginTop={2} justifyContent="start">
       {
-          playListHide && <Grid item sx={12} sm={12} marginBottom={2}>
-            <Button onClick={()=>setPlayListHide(false)} variant="contained"><PlaylistPlayIcon/>Play List </Button>
+          
+          playListHide && <Grid item xs={3} sm={3} marginBottom={2} >
+            <Button onClick={()=>setPlayListHide(false)} variant="contained" sx={{cursor:'pointer', display:'inline', width:'150px', textAlign:"center" }}><PlaylistPlayIcon/>Play List </Button>
           </Grid>
         }
-        {!playListHide && <Grid item xs={12} sm={3}>
+        {!playListHide && <Grid item xs={12} sm={3} >
           <PlayList setPlayListId={setPlayListId} setPlayListHide={setPlayListHide}/>
         </Grid>}
         
