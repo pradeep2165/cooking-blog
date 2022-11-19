@@ -8,14 +8,17 @@ import PlaylistPlayIcon from '@mui/icons-material/PlaylistPlay';
 import PlayList from "./components/PlayList";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import LinearProgressBar from "./components/LinearProgressBar";
 const App = () => {
    const [playListId, setPlayListId] = useState('');
    const [playListHide, setPlayListHide] = useState(true)
+   const [progress, setProgress] = useState(true);
   return (
 
     <>
       <CssBaseline />
       <Navbar setPlayListHide={setPlayListHide}/>
+      {progress && <LinearProgressBar/>}
       <Grid justifyContent="center" marginTop={2}>
       <Header/>
         </Grid>         
@@ -32,7 +35,7 @@ const App = () => {
         
         <Grid item xs={12} sm={9}>
           <Routes>
-            <Route path="/" element={<Home playListId={playListId}/>} />
+            <Route path="/" element={<Home playListId={playListId} setProgress={setProgress}/>} />
             <Route exact path="/video/:id" element={<Video />} />
           </Routes>
         </Grid>

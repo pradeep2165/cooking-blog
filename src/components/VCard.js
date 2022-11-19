@@ -24,7 +24,7 @@ export default function VCard({ content }) {
           </Avatar>
         }
         title={`${content.video.title.slice(0, 30)}`}
-        subheader={`${content.video.publishedTimeText}`}
+        subheader={`${content?.video?.publishedTimeText ? content?.video?.publishedTimeText :''}`}
       />
       <CardMedia component="img" height={`${content.video.thumbnails[3].height}`} image={`${content.video.thumbnails[3].url}`} alt="dish pic" onClick={() => navigate(`/video/${content.video.videoId}`)} />
       <CardContent>
