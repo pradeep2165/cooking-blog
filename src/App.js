@@ -7,7 +7,7 @@ import Video from "./components/Video";
 import PlaylistPlayIcon from '@mui/icons-material/PlaylistPlay';
 import PlayList from "./components/PlayList";
 import Header from "./components/Header";
-
+import Footer from "./components/Footer";
 const App = () => {
    const [playListId, setPlayListId] = useState('');
    const [playListHide, setPlayListHide] = useState(true)
@@ -37,6 +37,7 @@ const App = () => {
           </Routes>
         </Grid>
       </Grid>
+      <Footer/>
     </>
   );
 };
